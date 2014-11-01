@@ -1,0 +1,169 @@
+{include file="./header.html"}
+		
+		<!-- BREADCRUMB -->
+		<div class="breadcrumb-container">
+			<div class="container">
+				<div class="relative">
+					<ul class="bc push-up unstyled clearfix">
+						<li><a href="">Home</a></li>
+						<li class="active">Products</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="div_g"></div>
+		<div id="atr_id" val="{$a_id}"></div>
+		
+		<div class="container" >
+			<div class="row">
+				<div class="col-md-3 pull-left" >
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-title">
+									<a href="#son_nav" data-toggle="collapse" id="son_nav_m">导航列表</a>
+								</div>
+							</div>
+							<div class="panel-collapse collapse in" id="son_nav">
+								<div class="panel-body">
+									<div class="container">
+										<div class="row" >
+											<div class="col-md-6">
+												<ul class="list_unstyle" id="ul_nav">
+													
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-title">
+									<a href="#hot_sale" data-toggle="collapse">热销推荐</a>
+								</div>
+							</div>
+							<div class="panel-collapse collapse in" id="hot_sale">
+								<div class="panel-body">
+									<div class="container">
+										<div class="row" >
+											<ul id="sale_li" style="font-size:12px">
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-title">
+									<a href="#near_look" data-toggle="collapse">最近浏览</a>
+								</div>
+							</div>
+							<div class="panel-collapse collapse in" id="near_look">
+								<div class="panel-body">
+									<div class="container">
+										<div class="row" >
+											<ul id="near_info" style="font-size:12px">
+													
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+				<div class="col-md-9 pull-right">
+					<div  class="panel-group">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-heading">
+									<div class="panel-title">
+										<span data-toggle="collapse">您可以通过筛选，选择合适的商品</span>
+									</div>
+								</div>
+							</div>
+							<div class="panel-collapse collapse in" >
+								<div class="panel-body">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-10">
+												
+												<strong class="lead">价格：</strong>
+												<ul class="list-unstyle list-inline to_inline price_click">
+													<li class="btn btn-primary"><a href="javascript:void(0)">全部</a></li>
+													<li><a href="javascript:void(0)">0-89</a></li>
+													<li><a href="javascript:void(0)">90-199</a></li>
+													<li><a href="javascript:void(0)">200-499</a></li>
+													<li><a href="javascript:void(0)">500以上</a></li>
+												</ul>
+												<div class="div_g"></div>
+												<strong class="lead">品牌：</strong>
+												<ul class="list-unstyle list-inline to_inline brand_click" id="brand_ul">
+													<li class="brand_li btn btn-primary"><a href="javascript:void(0)">全部</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						
+					</div>
+					
+						
+						<div class="div_g"></div>
+						<div class="panel panel-default">
+							<div class="panel-body" id="pro_body">
+								
+								<div class="products-layout grid m-t-b" >
+								{for $foo=1 to $page_size}
+								<!-- 单个商品 -->
+								<div status="product_is_none{$foo}" class="product product_my ">
+									<div class="entry-media">
+										<img src="{$smarty.const.IMG_DIR}/AjaxLoader2.gif" alt=""  class="img_my list_thumb{$foo}"/>
+										<div class="hover">
+											<a href="" class="entry-url list_url{$foo}" target="_blank"></a>
+											<ul class="icons unstyled">
+												<li>
+													<a href="{$smarty.const.IMG_DIR}/AjaxLoader2.gif" class="circle list_img{$foo}" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a title=""  href="#" target="_blank" class="small list_title{$foo}">请稍后...</a>
+										</h5>
+										<div class="entry-price">
+											<s class="entry-discount list_market_price{$foo}"></s>
+											<strong class="accent-color price list_shop_price{$foo}"></strong>
+										</div>
+									</div>
+								</div>
+									<!-- 单个商品 -->			
+								{/for}
+								</div>
+									<div class="pager">
+										<button type="button" class="btn btn-primary previous" id="page_pre" val="1">上一页</button>
+										
+										<button type="button" class="btn btn-primary next" id="page_next" val="1">下一页</button>
+									</div>
+							</div>
+						</div>
+					
+				</div>
+				<div class="div_g"></div>
+			</div>
+		</div>
+	
+		<script type="text/javascript" src="{$smarty.const.JS_DIR}list.js"></script>
+		{include file="./footer.html"}

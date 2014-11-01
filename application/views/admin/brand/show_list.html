@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <title>GF_SHOP 管理中心 - 商品品牌 </title>
+    <meta content="noindex, nofollow" name="robots">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link type="text/css" rel="stylesheet" href="{$smarty.const.B_CSS_DIR}general.css">
+    <link type="text/css" rel="stylesheet" href="{$smarty.const.B_CSS_DIR}main.css">
+    <script src="{$smarty.const.B_JS_DIR}transport.js" type="text/javascript"></script>
+    <script src="{$smarty.const.B_JS_DIR}common.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<h1>
+    <span class="action-span"><a href="{base_url url='admin/brand/add'}">添加品牌</a></span>
+    <span class="action-span1"><a href="index.php?act=main">GF_SHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 商品品牌 </span>
+    <div style="clear:both"></div>
+</h1>
+<script src="{$smarty.const.B_JS_DIR}utils.js" type="text/javascript"></script>
+<script src="{$smarty.const.B_JS_DIR}listtable.js" type="text/javascript"></script><!-- 品牌搜索 -->
+<div class="form-div">
+    <form name="searchForm" action="">
+        <img width="26" height="22" border="0" alt="SEARCH" src="{$smarty.const.B_IMG_DIR}icon_search.gif">
+        <input type="text" size="15" name="brand_name">
+        <input type="submit" class="button" value=" 搜索 ">
+    </form>
+</div>
+
+<form name="listForm" action="" method="post">
+<!-- start brand list -->
+<div id="listDiv" class="list-div">
+
+    <table cellspacing="1" cellpadding="3">
+        <tbody><tr>
+            <th>品牌名称</th>
+            <th>品牌网址</th>
+            <th>品牌描述</th>
+            <th>排序</th>
+            <th>是否显示</th>
+            <th>操作</th>
+        </tr>
+        {foreach $data as $brand}
+        <tr>
+            <td class="first-cell" style="background-color: rgb(255, 255, 255);">
+                <span style="float:right">
+                    {if !empty($brand['brand_logo'])}
+                    <a target="_brank" href="{base_url}public/upload/{$brand['brand_logo']}"><img width="16" height="16" border="0" alt="品牌LOGO" src="{base_url}public/upload/{$brand['brand_logo']}"></a>
+                    {else}
+                    <a><img width="16" height="16" border="0" alt="品牌LOGO" src="{base_url}public/admin/images/picflag.gif"></a>
+                    {/if}
+                </span>
+                <span onclick="">{$brand['brand_name']}</span>
+            </td>
+            <td style="background-color: rgb(255, 255, 255);"><a target="_brank" href="http://www.nokia.com.cn/">{$brand['brand_url']}</a></td>
+            <td align="left" style="background-color: rgb(255, 255, 255);">{$brand['brand_desc']}</td>
+            <td align="right" style="background-color: rgb(255, 255, 255);"><span onclick="javascript:listTable.edit(this, 'edit_sort_order', 1)">{$brand['sort_order']}</span></td>
+            <td align="center" style="background-color: rgb(255, 255, 255);">
+                {if $brand['is_show']=='1'}
+                <img onclick="listTable.toggle(this, 'toggle_show', 1)" src="{$smarty.const.B_IMG_DIR}yes.gif">
+                {else}
+                <img onclick="listTable.toggle(this, 'toggle_show', 1)" src="{$smarty.const.B_IMG_DIR}no.gif">
+                {/if}
+            </td>
+            <td align="center" style="background-color: rgb(255, 255, 255);">
+                <a title="编辑" href="{base_url url='admin/brand/edit'}/{$brand['brand_id']}">编辑</a> |
+                <a title="编辑" onclick="return confirm('您确定要删除吗？')" href="{base_url url='admin/brand/del'}/{$brand['brand_id']}">移除</a>
+            </td>
+        </tr>
+        {/foreach}
+        <tr>
+            <td nowrap="true" align="right" colspan="6" style="background-color: rgb(255, 255, 255);">
+                <!-- $Id: page.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+                <div id="turn-page">
+                    {$links}
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+
+    <!-- end brand list -->
+</div>
+</form>
+<div id="footer">
+    copyright by gf_shop thanks
+</div>
+
+</body></html>

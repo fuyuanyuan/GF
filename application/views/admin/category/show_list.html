@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <title>GF_SHOP 管理中心 - 商品分类 </title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{$smarty.const.B_CSS_DIR}general.css" rel="stylesheet" type="text/css">
+    <link href="{$smarty.const.B_CSS_DIR}main.css" rel="stylesheet" type="text/css">
+</head>
+<body style="cursor: auto;">
+
+<h1>
+    <span class="action-span"><a href="{base_url url='admin/category/add'}">添加分类</a></span>
+    <span class="action-span1"><a href="#">GF_SHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 商品分类 </span>
+    <div style="clear:both"></div>
+</h1>
+
+<form method="post" action="" name="listForm">
+    <!-- start ad position list -->
+    <div class="list-div" id="listDiv">
+
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tbody><tr>
+                <th>分类名称</th>
+                <th>商品数量</th>
+                <th>排序</th>
+                <th>操作</th>
+            </tr>
+            {foreach $list as $row}
+            <tr align="center" class="0" id="0_6">
+                <td align="left" style="background-color: rgb(255, 255, 255);" class="first-cell">
+                    {$row['cat_name']|indent:$row['deep']:'&nbsp;&nbsp;'}
+                </td>
+                <td width="" style="background-color: rgb(255, 255, 255);">商品数量</td>
+                <td width="" align="right" style="background-color: rgb(255, 255, 255);">{$row['sort_order']}</td>
+                <td width="" align="center" style="background-color: rgb(255, 255, 255);">
+                    <a href="">转移商品</a> |
+                    <a href="{base_url url='admin/category/edit'}/{$row['cat_id']}">编辑</a> |
+                    <a onclick=" return confirm('你确定要删除吗？');" href="{base_url url='admin/category/del'}/{$row['cat_id']}">移除</a>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody></table>
+    </div>
+</form>
+
+<div id="footer">
+    &copy;GF_SHOP, Thank You!
+</div>
+
+</body></html>

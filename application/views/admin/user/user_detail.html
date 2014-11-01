@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ECSHOP 管理中心 - 编辑会员账号 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{base_url url='public/admin/styles/general.css'}" rel="stylesheet" type="text/css" />
+<link href="{base_url url='public/admin/styles/main.css'}" rel="stylesheet" type="text/css" />
+
+</head>
+<body onload='guan()'>
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/user/userlist'}">会员列表</a></span>
+<span class="action-span1"><a href="{base_url url='admin/welcome'}">ECSHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 编辑会员账号 </span>
+<div style="clear:both"></div>
+</h1>
+<div class="main-div">
+<form method="post" action="{site_url url='admin/user/edit'}" name="theForm" onsubmit="return validate()">
+<table width="100%" >
+  <tr>
+    <td class="label">会员名称:</td>
+    <td>{$one_info->user_name|default:'未填写'}</td>
+  </tr>
+  <tr>
+    <td class="label">会员昵称:</td>
+    <td>{$one_info->user_alias|default:'未填写'}</td>
+  </tr>
+   <tr>
+    <td class="label">性别:</td>
+    <td>{if ($one_info->user_sex == '0')}男{else}女{/if}</td>
+  </tr>
+  <tr>
+    <td class="label">出生日期:</td>
+    <td>{if ($one_info->user_birthday == '0')}未填写{else}{date('Y-m-d',$one_info->user_birthday)}{/if}</td>
+  </tr>
+
+   <tr>
+    <td class="label">购物积分:</td>
+    <td >{$one_info->user_inte|default:'0'}</td>
+  </tr>
+
+   <tr>
+    <td class="label">会员等级:</td>
+    <td>{$one_info->user_vip|default:'0'}</td>
+  </tr>
+
+  
+    <tr>
+    <td class="label">邮件地址:</td>
+    <td>{$one_info->user_email|default:'未填写'}</td>
+  </tr>
+  
+      <tr>
+    <td class="label">注册时间:</td>
+    <td>{date('Y-m-d',$one_info->user_reg_time)}</td>
+  </tr>
+  
+  <tr>
+    <td class="label">最后登陆时间:</td>
+    <td>{date('Y-m-d',$one_info->user_last_time)}</td>
+  </tr>
+  
+  
+  <tr>
+    <td class="label">最后登陆IP:</td>
+    <td>{long2ip($one_info->user_last_ip)}</td>
+  </tr>
+  <tr>
+    <td class="label">登陆次数:</td>
+    <td>{$one_info->user_login_count}</td>
+  </tr>
+  
+    <tr>
+    <td class="label">目前状态:</td>
+    <td>{if ($one_info->user_flag == '0')}正常{else}该用户已经被拉入黑名单{/if}</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="button" value=" 转到修改页面" class="button"  onclick="javascript:location.href='{base_url url='admin/user/edit'}/{$one_info->user_id}'"/>
+      </td>
+  </tr>
+</table>
+
+</form>
+</div>
+<div id="footer">
+	版权所有 &copy; 2012-2013 传智播客 - PHP培训 - 
+</div>
+
+
+</body>
+</html>
+<script type='text/javascript'>
+  function check()
+  {
+    var pass1 = document.getElementById('cc1');
+    var pass2 = document.getElementById('cc2');
+    if(pass1.value!=pass2.value)
+    {
+        var sp1 = document.getElementById('span1');
+        sp1.style.display = 'block';
+    }
+    if(pass1.value==pass2.value)
+    {
+        var sp1 = document.getElementById('span1');
+        sp1.style.display = 'none';
+    }
+
+  }
+  function guan()
+  {
+      var vip1 = document.getElementById('vip1');
+      var vip2 = document.getElementById('vip2');
+      removeAllChild();
+      var score = Math.ceil(vip1.value/2000);
+      if(vip1.value>10000)
+      {
+        score = 5;
+      }
+      for(var i=0;i<score;i++)
+      {
+        vip2.innerHTML += '<img src="{base_url url='public/admin/images/guan.gif'}">';
+      }
+     vip2.innerHTML += '<span class="notice-span">每加一级加一个皇冠</span>';
+  }
+
+  function removeAllChild()
+  {
+      var vip2 = document.getElementById("vip2");
+      while(vip2.lastChild) //当div下还存在末尾节点时 循环继续
+      {
+        vip2.removeChild(vip2.lastChild) 
+      }
+  }
+</script>

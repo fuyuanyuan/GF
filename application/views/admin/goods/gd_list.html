@@ -1,0 +1,115 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 商品分类 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span1"><a href="#">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 商品回收站 </span>
+<div style="clear:both"></div>
+</h1>
+
+<form name="listForm" action="{base_url url='admin/goods/gdflags'}" method="post">
+<!-- start ad position list -->
+<div id="listDiv" class="list-div">
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tbody><tr>
+  <th>ID</th>
+  <th>商品名</th>
+  <th>货号</th>
+  <th>价格</th>
+  <th>商品积分</th>
+	<th>上架</th>
+	<th>男装</th>
+	<th>女装</th>
+	<th>排序</th>
+	<th>库存</th>
+	<th>操作</th>
+  </tr>
+{foreach $goods as $row}
+  <tr align="center" id="0_6" class="0">
+  <td align="left" class="first-cell" style="background-color: rgb(255, 255, 255);">
+	<input type="checkBox" name="ids[]" value="{$row->goods_id}">{$row->goods_id}
+  <input type='hidden' name='goods_promote' value='{$row->goods_promote}'>
+	</td>
+    <td width="" style="background-color: rgb(255, 255, 255);">{$row->goods_name}</td>
+    <td width="" align="center" style="background-color: rgb(255, 255, 255);">{$row->goods_sn}</td>
+	<td width="" align="center" style="background-color: rgb(255, 255, 255);">{$row->shop_price}</td>
+	<td width="" align="center" style="background-color: rgb(255, 255, 255);">{$row->goods_jifen}</td>
+
+	<td width="" align="center" style="background-color: rgb(255, 255, 255);"><span onclick=""><img src="{base_url url='public/admin/images'}/{if $row->onsale}yes{else}no{/if}.gif"/></span></td>
+
+  <td width="" align="center" style="background-color: rgb(255, 255, 255);"><span onclick=""><img src="{base_url url='public/admin/images'}/{if $row->goods_promote&1}yes{else}no{/if}.gif"/></span></td>
+	
+  <td width="" align="center" style="background-color: rgb(255, 255, 255);"><span onclick=""><img src="{base_url url='public/admin/images'}/{if $row->goods_promote&2}yes{else}no{/if}.gif"/></span></td>
+
+	<td width="" align="center" style="background-color: rgb(255, 255, 255);"><span onclick="">{$row->sort_order}</span></td>
+
+    <td align="center" style="background-color: rgb(255, 255, 255);">
+    {$row->goods_num}</td>
+    <td align="center" style="background-color: rgb(255, 255, 255);">
+      <a href="{base_url url='admin/goods/huifu'}/{$row->goods_id}" target="_blank" title="恢复">恢复</a>|
+
+      <a href="{base_url url='admin/goods/del'}/{$row->goods_id}" onclick="confrim('您确实要把该商品放入回收站吗？')" title="回收站">彻底删除</a>
+      </td>
+
+  </tr>
+  {/foreach}
+</table>
+
+<table cellspacing="0" id="page-table">
+  <tbody><tr>
+    <td nowrap="true" align="right" style="background-color: rgb(255, 255, 255);">
+	  <div id="turn-page">
+        总计  <span id="totalRecords"><?php echo $total;?></span>
+        个记录分为 <span id="totalPages"><?php echo $total_page;?></span>
+        页当前第 <span id="pageCurrent"><?php echo $page;?></span>
+        页，每页 
+         
+		</select>
+        </span>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div>
+
+  <select name="type" id='sel' onchange='change()'>
+    <option value='0'>请选择..</option>
+    <option value='del'>批量彻底删除</option>
+    <option value='huifu'>批量恢复</option>
+  </select>
+	  
+    <input type="submit" class="button" id="sub" value=" 确定 " disabled='true'>
+</div>
+
+</form>
+
+<div id="footer">
+&copy;Ecshop, Thank You!
+</div>
+
+</body>
+</html>
+<script type='text/javascript'>
+  function change()
+  {
+    var sel = document.getElementById('sel');
+    var sub = document.getElementById('sub');
+    if(sel.value != 0)
+    {
+      sub.disabled = '';
+    }
+    if(sel.value == 0)
+    {
+      sub.disabled = 'true';
+    }
+  }
+</script>

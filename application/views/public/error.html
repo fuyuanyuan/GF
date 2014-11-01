@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>错误提示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content='2;url={$url}' http-equiv='Refresh'>
+<link rel="stylesheet" href="{base_url}public/admin/styles/error.css" style="text/css" />
+</head>
+<body>
+
+	<div id="show_error">
+		<div class="error_msg">
+			{$errors}
+		</div>
+		<div class="error_re">
+			<p>页面将于3秒后自动返回前页面，</p>
+			<p>　　　　　　您也可以直接点击<a href="{$url}" ><span>这里</span></a>直接返回！</p>
+		</div>
+	</div>
+
+</body>
+</html>

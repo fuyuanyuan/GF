@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 修改评论 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+<script type='text/javascript' src="{base_url url='public/admin/js/jquery.js'}"></script>
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/pinglun/show'}">评论列表</a></span>
+<span class="action-span1"><a href="{base_url url='admin/welcome'}">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 修改评论</span>
+<div style="clear:both"></div>
+</h1>
+<div class="main-div">
+  <form name="theForm" method="post" action="{base_url url='admin/pinglun/add'}">
+  <table width="100%" id="general-table">
+      <tbody>
+        <tr>
+        <td class="label">所属商品id</td>
+        <td>
+          <input type="text" size="10" value="{$crow->goods_id}" name="goods_id">
+          <span class="require-field">*</span>        
+        </td>
+      </tr>
+      <tr>
+        <td class="label">用户id</td>
+        <td>
+          <input type="text" size="10" value="{$crow->user_id}" name="user_id">
+          <span class="require-field">*</span>        
+        </td>
+      </tr>
+      <tr>
+        <td class="label">用户名：</td>
+        <td>
+           <input type="text" size="30" value="{$crow->user_name}" name="user_name">
+		    </td>
+      </tr>
+      <tr>
+        <td class="label">评价等级</td>
+       <td>
+        <input type="text" size="10" value="{$crow->comment_xing}" name="comment_xing"><span>共5级，1,2,3,4,5</span>
+        </td>
+      </tr>
+      <tr>
+         <td class="label">满意度</td>
+          <td>
+             <select name="comment_rank">
+              <option value="0" {if $crow->comment_rank==0}selected{/if}>好评</option>
+              <option value="1" {if $crow->comment_rank==1}selected{/if}>中评</option>
+              <option value="2" {if $crow->comment_rank==2}selected{/if}>差评</option>
+             </select><span class="require-field">*</span>
+          </td>
+      </tr>
+     <tr>
+        <td class="label">评论内容：</td>
+        <td>
+           <textarea name='content'>{$crow->content}</textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+        <div class="button-div">
+          <input type="submit" class="button" value=" 确定 ">
+          <input type="reset" class="button" value=" 重置 ">
+        </div>
+        </td>
+      </tr>
+      </tbody></table>
+  </form>
+</div>
+<div id="footer">
+  版权所有 &copy; 2012-2013 传智播客 - PHP培训 - 
+</div>
+</body></html>

@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 商品分类 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+<script type='text/javascript' src='{base_url url='public/admin/js/jquery.js'}'></script>
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/order/add'}">添加订单</a></span>
+<span class="action-span1"><a href="#">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 订单列表 </span>
+<div style="clear:both"></div>
+</h1>
+
+<!-- start ad position list -->
+<div id="listDiv" class="list-div">
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tbody><tr>
+  <th>ID</th>
+  <th>订单号</th>
+  <th>商品编号</th>
+  <th>订单总价</th>
+  <th>收货人</th>
+  <th>收货地址</th>
+	<th>电话</th>
+  <th>下单时间</th>
+	<th>订单状态</th>
+	<th>操作</th>
+  </tr>
+{foreach $ordlist as $orow}
+  <tr align="center" id="0_6" class="0">
+    <td align="center">{$orow->order_id}</td>
+    <td align="center">{$orow->order_sn}</td>
+    <td align="center">{$orow->gids}</td>
+    <td align="center">{$orow->total}</td>
+    <td align="center">{$addr[$orow@index]->addr_name}</td>
+    <td align="center">{$addr[$orow@index]->address}</td>
+    <td align="center">{$addr[$orow@index]->tel}</td>
+    <td align="center">{$orow->ordtime}</td>
+    <td align="center">{if $orow->state==0}未配送<button type="button" onclick="location.href='{base_url url='admin/order/pei'}/{$orow->order_id}'">点击配送</button>{elseif $orow->state==1}配送中{else}已完成{/if}</td>
+    <td align="center" style="background-color: rgb(255, 255, 255);">
+      <a href="{base_url url='admin/order/edit'}/{$orow->order_id}" title="编辑"><img src="{base_url url='public/admin/images'}/icon_edit.gif" width="16" height="16" border="0"></a>
+      <a href="{base_url url='admin/order/del'}/{$orow->order_id}" onclick="confrim('您确实要把该商品放入回收站吗？')" title="回收站"><img src="{base_url url='public/admin/images'}/icon_trash.gif" width="16" height="16" border="0"></a>
+      </td>
+  </tr>
+  {/foreach}
+</table>
+
+<table cellspacing="0" id="page-table">
+  <tbody><tr>
+    <td nowrap="true" align="right" style="background-color: rgb(255, 255, 255);">
+	  <div id="turn-page">
+        总计  <span id="totalRecords"><?php echo $total;?></span>
+        个记录分为 <span id="totalPages"><?php echo $total_page;?></span>
+        页当前第 <span id="pageCurrent"><?php echo $page;?></span>
+        页，每页 
+         
+		</select>
+        </span>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div id="footer">
+&copy;Ecshop, Thank You!
+</div>
+
+</body>
+</html>

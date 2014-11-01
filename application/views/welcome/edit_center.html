@@ -1,0 +1,86 @@
+{include file="./header.html"}
+	
+		<!-- BREADCRUMB -->
+		<div class="breadcrumb-container">
+			<div class="container">
+				<div class="relative">
+					<ul class="bc unstyled clearfix">
+						<li><a href="#">首页</a></li>
+						<li class="active">修改个人信息</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // BREADCRUMB -->
+		
+		<!-- SITE MAIN CONTENT -->
+		<main id="main-content" role="main">
+				
+			<div class="container">
+				<div class="row">
+
+				<!-- CONTENT -->
+<br>
+<div class="col-md-1"></div>	
+<div class="col-md-11">
+<h2>个人信息修改 &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-xs" onclick="location.href='{base_url url='home/usercenter/show'}/{$row->user_id}'">返回</button></h2>
+<form method="post" action="{base_url url='home/usercenter/edit'}" name="theForm" onsubmit="return validate()">
+  <input type='hidden' name='user_id' value="{$row->user_id}">
+<table width="100%" class='table table-hover'>
+  <tr>
+    <td>会员名称:</td>
+    <td>{$row->user_name}<input type="hidden" name="user_name" value="{$row->user_name}" /></td>
+  </tr>
+  <tr>
+    <td>会员昵称:</td>
+    <td><input type="text" name="user_alias" value="{$row->user_alias}" /></td>
+  </tr>
+   <tr>
+    <td>性别:</td>
+    <td>{if $row->user_sex==0}<input type="radio" name="user_sex" value="0" checked>&nbsp;男&nbsp;<input type="radio" name="user_sex" value="1">&nbsp;女&nbsp;{else}<input type="radio" name="user_sex" value="0">&nbsp;男&nbsp;<input type="radio" name="user_sex" value="1" checked>&nbsp;女&nbsp;{/if}</td>
+  </tr>
+  <tr>
+    <td>出生日期:</td>
+    <td><input type='text' name='user_birthday' value='{date('Y-m-d',$row->user_birthday)}'></td>
+  </tr>
+
+    <tr>
+    <td>邮件地址:</td>
+    <td><input type="text" name="user_email" maxlength="60" size="40" value="{$row->user_email}" /><span class="require-field">*</span></td>
+  </tr>
+    
+ <div></div>
+
+  <tr>
+    <td>新密码:</td>
+    <td><input type="password" name="user_pass" maxlength="20" size="20" id='cc2' onblur='check()'/><div  class="require-field" id='span1' style="display:none;">两次密码输入不同，请检查！</div></td>
+  </tr>
+  <tr>
+    <td>确认密码:</td>
+    <td><input type="password" name="repass" maxlength="20" size="20" id='cc1' onblur='check()'/><span class="require-field">*</span></td>
+  </tr>
+    
+  <tr>
+    <td align='center'>
+      <input type="submit" value=" 确定 " class="btn btn-primary btn-lg" />
+  	</td>
+  	<td>
+      <input type="reset" value=" 重置 " class="btn btn-primary btn-lg" />
+      </td>
+  </tr>
+</table>
+
+</form>
+</div>
+<br>			
+	<!-- CONTENT -->
+
+				
+				</div>
+			</div>
+			
+		</main>
+		<!-- // SITE MAIN CONTENT -->
+		
+		<!-- SITE FOOTER -->
+{include file="./footer.html"}

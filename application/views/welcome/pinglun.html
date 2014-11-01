@@ -1,0 +1,97 @@
+{include file="./header.html"}
+	<!-- // SITE HEADER -->
+	
+		<!-- BREADCRUMB -->
+		<div class="breadcrumb-container">
+			<div class="container">
+				<div class="relative">
+					<ul class="bc unstyled clearfix">
+						<li><a href="#">首页</a></li>
+						<li class="active">用户评论</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // BREADCRUMB -->
+		
+		<!-- SITE MAIN CONTENT -->
+		<main id="main-content" role="main">
+				
+			<div class="container">
+				<div class="row">
+
+				<!-- CONTENT -->
+				<br>
+					<table class="table table-bordered">
+						<tr>
+							<td width=240 align='center'>订单号：</td><td>{$orow->order_sn}</td>
+						</tr>
+					</table>
+					<div class='col-md-6'>
+						{foreach $goods as $grow}
+						<table class="table table-bordered">
+							<tr>
+								<td rowspan='3' align='center' width=160><img src="{base_url url='public/upload/'}/{$grow->goods_thumb}" width=100 height=160/></td><td width=50>订单商品</td><td width=180>{$grow->goods_name}</td>
+							</tr>
+							<tr>
+								<td width=80>商品单价：</td><td>{$grow->shop_price}</td>			
+							</tr>
+							<tr>
+								<td width=80>购买数量：</td><td>{$nums[$grow@index]}</td>
+							</tr>
+						</table>
+						<br/>
+						{/foreach}
+					</div>
+						
+	
+				<!-- 评价表单-->
+				
+			<div class='col-md-5'>
+				<form role="form" action="{base_url url='home/pinglun/insert'}" method='post'>
+					<input type='hidden' name='gids'value='{$orow->gids}'>
+					<input type='hidden' name='user_name'value='{$urow->user_name}'>
+					<input type='hidden' name='user_id'value='{$orow->user_id}'>
+					{foreach $goods as $grow}
+					<div class="form-group stylish-input">
+						<input type="radio" name="rank{$grow->goods_id}" class="prettyCheckable m-r" data-label="好评" checked="checked" value='0' />
+						<input type="radio" name="rank{$grow->goods_id}" class="prettyCheckable" data-label="中评" value='1' />
+						<input type="radio" name="rank{$grow->goods_id}" class="prettyCheckable" data-label="差评" value='2' />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="rate-bar inline-middle">
+                        <!-- 评价星星 -->
+							<input style="display: none;" value="5" step="1" id="backing0" type="range" name='xing{$grow->goods_id}'>
+							<div class="rateit" data-rateit-backingfld="#backing0" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false" data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+							</div>
+						</div>
+						<span class="entry-review-count inline-middle">(请选择您的满意度)</span>
+						<!-- 评价星星 -->
+					</div>
+
+
+					<div class="form-group">
+						<textarea class="form-control" rows="5" name='content{$grow->goods_id}'></textarea>
+					</div>
+					{/foreach}
+				
+					<center>
+						<button type="submit" class="btn btn-primary btn-lg">提交评论</button>&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="reset" class="btn btn-primary btn-lg">重  置</button>
+						<br/>
+						<br/>
+					</center>
+				</form>	
+			</div>
+					<!-- 评价表单-->
+
+				<!-- CONTENT -->
+
+				
+				</div>
+			</div>
+			
+		</main>
+		<!-- // SITE MAIN CONTENT -->
+		
+		{include file="./footer.html"}
+	

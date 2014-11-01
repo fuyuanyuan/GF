@@ -1,0 +1,144 @@
+.ui-widget-header {
+	background:#fa6f57;
+}
+.ui-dialog-titlebar-close {
+	background:url(../images/my/close.gif) center center;
+}
+.ui-dialog-buttonset button {
+	border:1px border #fa6f57; 
+}
+#login,#reg{
+	margin:20px 0 0 0;
+}
+#login p,#reg p{
+	padding: 5px 0 0 0;
+	position:relative;
+}
+#login p,#reg p {
+	text-align:center;
+}
+#login input.text, #reg input.text{
+	width:200px;
+	border-radius : 5px;
+	border:1px solid #ccc;
+}
+#login span.star,#reg span.star {
+	color:red;
+	font-size:20px;
+}
+#login span.succ,#reg span.succ {
+	position:relative;
+	top:8px;
+	width:18px;
+	height:18px;
+	display:inline-block;
+	background:url(../images/my/reg_succ.png) no-repeat center center;
+}
+#login ol.login_error,#reg ol.reg_error {
+	font-size:14px;
+	color:red;
+	padding:0 0 0 43px;
+}
+#login img.login_img,#reg img.login_img {
+	position:absolute;
+	top:50px;
+	left:135px;
+}
+#reg img.login_img {
+	left:190px;
+}
+#member {
+	width:65px;
+	font-weight:bold;
+	color:#999;
+	height:40px;
+	line-height:40px;
+	background:url(../images/arrow.png) no-repeat right center;
+}
+#member_info {
+	width:200px;
+	height:100px;
+	border:1px solid red;
+	border-top:none;
+	position:absolute;
+	top:44px;
+	right:160px;
+	background:#fff;
+	display:none;
+}
+#member_info dl.member {
+	width:200px;
+	height:80px;
+	display:block;
+}
+#member_info dl.member dt {
+	width:80px;
+	height:80px;
+	display:block;
+	background:url(../images/self.jpg) no-repeat left center;
+	margin:10px;
+	float:left;
+}
+#member_info dl.member dd {
+	width:100px;
+	height:30px;
+	line-height:30px;
+	float:right;
+	margin-top:10px;
+	text-align:center;
+}
+#loading {
+	color:#666;
+	font-size:14px;
+	background:url(../images/my/loading.gif) no-repeat 20px center;
+	line-height:25px;
+	text-indent:35px;
+}
+/*autocomplete*/
+.ui-menu-item a{
+	color:#666;
+	font-size:12px;
+}
+.ui-menu-item a.ui-state-focus {
+	border:1px solid #ccc;
+	background:#ccc;
+	color:#333;
+}
+.div_g {
+	height:10px;
+}
+.to_inline{
+	display:inline;
+}
+.product_my {
+	height:420px;
+}
+.to_display {
+	display : none;
+}
+.my_car{
+	width:180px;
+	height:60px;
+	background:orange;
+	display:none;
+	position:fixed;
+	z-index:900;
+	border-radius:5px;
+}
+.my_car_span {
+	color:#FFF;
+}
+.my_car_span strong {
+	font-weight:bold;
+	color:#306;	
+}
+
+
+
+
+
+
+
+
+
+

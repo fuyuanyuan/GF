@@ -1,0 +1,43 @@
+#show_error {
+	width:940px;
+	height:387px;
+	margin:130px auto;
+	border:1px solid #000;
+	border-top:none;
+	border-radius : 10px;
+	background:url(1.jpg) no-repeat;
+	position:relative;
+}
+#show_error div.error_msg ,#show_error div.error_re{
+	position:absolute;
+	top:260px;
+	left:40px;
+	border-top:1px dashed #ccc;
+	width:400px;
+	height:100px;
+	text-indent:20px;
+	overflow:auto;
+	border:1px solie #ccc;
+	color: red;
+	font-size:16px;
+	font-weight:bold;
+	letter-spacing:1px;
+}
+#show_error div.error_re {
+	left:500px;
+	color:#999;
+}
+#show_error div.error_re span {
+	color:blue;
+	font-size:20px;
+	font-weight:blod;
+}
+#show_error div.error_re span:hover {
+	text-decoration:underline;
+}
+
+
+
+
+
+

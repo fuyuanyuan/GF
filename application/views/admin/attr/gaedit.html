@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 添加属性 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/attribute/attrlist'}">商品属性</a></span>
+<span class="action-span1"><a href="index.php?act=main">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 修改属性 </span>
+<div style="clear:both"></div>
+</h1>
+<div class="main-div">
+  <form onsubmit="" name="theForm" method="post" action="{base_url url='admin/attribute/gaedit'}">
+        <input type='hidden' name='goods_id' value='{$goods_id}'>
+ <table width="90%" align="center">
+      <tr>
+        <td class="label">属性名</td>
+      <td>属性值</td>
+        </tr>
+      {foreach $list as $attr}
+      <tr>
+        <td class="label">{$attr->attr_name}</td>
+      <td>
+      {foreach $ga as $grow}
+        {if $attr->attr_type == 'text'}
+          {if $grow->attr_id == $attr->attr_id}
+           <input type="text" size="40" value="{$grow->value}" name="attr_value[{$attr->attr_id}]">
+          {/if}
+
+        {elseif $attr->attr_type == 'select'}
+          {if $grow->attr_id == $attr->attr_id}
+            <select name="attr_value[{$attr->attr_id}]">
+              {foreach explode('|', $attr->attr_values) as $option}
+                {if $grow->value == $option}
+                  <option value="{$option}" selected>{$option}</option>
+                {else}<option value="{$option}">{$option}</option>
+                {/if}
+              {/foreach}
+          </select>
+          {/if}
+
+        {else}
+          {if $grow->attr_id == $attr->attr_id}
+            {foreach explode('|', $attr->attr_values) as $v}
+              {if $grow->value == $v}
+                <input type='radio' name='attr_value[{$attr->attr_id}]' value='{$v}' checked>{$v}
+               {else}
+                <input type='radio' name='attr_value[{$attr->attr_id}]' value='{$v}' checked>{$v}
+              {/if}
+            {/foreach}
+          {/if}
+
+        {/if}
+      {/foreach}
+      </td>
+        </tr>
+    {/foreach}
+    </table>
+   <tr>
+        <td colspan="2">
+        <div class="button-div">
+          <input type="submit" class="button" value=" 确定 ">
+          <input type="reset" class="button" value=" 重置 ">
+        </div>
+        </td>
+      </tr>
+      </tbody></table>
+  </form>
+</div>
+<div id="footer">
+  版权所有 &copy; 2012-2013 传智播客 - PHP培训 - 
+</div>
+</body></html>

@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 添加新商品 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+<script type='text/javascript' src='{base_url url='public/admin/js/jquery.js'}'></script>
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/goods/goodslist'}">商品列表</a></span>
+<span class="action-span1"><a href="#">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 添加新商品 </span>
+<div style="clear:both"></div>
+</h1>
+
+<!-- start goods form -->
+<div class="tab-div">
+    <!-- tab bar -->
+    <div id="tabbar-div">
+      <p>
+    <span id="general-tab" class="tab-front">修改相册</span>
+      </p>
+    </div>
+
+    <!-- tab body -->
+    <div id="tabbody-div">
+    <h3 style="text-align:left;text-indent:20px;">产品名称：<span style="color:orange">{$info[0]->goods_name}</span> </h3>
+      <form name="theForm" method="post" enctype="multipart/form-data" action="{base_url url='admin/goods/add_photo'}">
+        <!-- 通用信息 -->
+        <input type="hidden" name="goods_id" value="{$info[0]->goods_id}" /> 
+        
+        	
+        
+       <table width="90%" align="center" id="gallery-table" >
+                <!--  -->
+                <tbody>
+                
+                <tr>
+                {foreach $p_info as $value}
+                	<td>
+                		<img src="{base_url url='public/upload'}/{$value->thumb_url}" style="display:block" />
+                		<input class="del{$info[0]->goods_id}" type="button" value="删除" pid="{$info[0]->goods_id}" oid="{$value->img_id}" />
+                	</td>
+              {/foreach}
+                	</tr>
+              
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                    <td>
+                        <a href="javascript:;" onclick="addImg(this)">[+]</a>
+                        图片描述 <input type="text" name="img_desc[]" size="20">
+                        上传文件 <input type="file" name="img_url[]">
+                        <input type="text" size="40" value="或者输入外部图片链接地址" style="color:#aaa;"  name="img_file[]">
+                    </td>
+                </tr>
+                </tbody></table>
+                  <script type="text/javascript">
+                /**
+                 * 添加图片域
+                 */
+                function addImg(obj)
+                {
+                    var src = obj.parentNode.parentNode;
+                    var idx = rowindex(src);
+
+                    var tbl = document.getElementById('gallery-table');
+                    var row = tbl.insertRow(idx + 1);
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = src.cells[0].innerHTML.replace(/(.*)(addImg)(.*)(\[)(\+)/i, "$1removeImg$3$4-");
+                }
+                /**
+                 * 删除
+                 */
+                function removeImg(obj)
+                {
+                    var row = rowindex(obj.parentNode.parentNode);
+                    var tbl = document.getElementById('gallery-table');
+                    tbl.deleteRow(row);
+                }
+                
+               $.each($('input[class^=del]'),function(index,value) {
+	   				$(value).click(function(){
+						$.ajax({
+							url : "{base_url url='admin/goods/del_photo'}",
+							type : 'post',
+							data : {
+								'g_id' : $(value).attr('pid'),
+								'o_id' : $(value).attr('oid'),
+							},
+							success : function(response,status,xhr) {
+								if(response == '1') {
+									$(value).prev().attr('src',"{base_url url='public/admin/images/ok.jpg'}");
+									$(value).hide();
+								}
+							},
+						});
+               });
+                //删除图片
+
+					
+				});
+            </script>
+
+		<script type="text/javascript" src="{base_url url='public/admin/js/utils.js'}"></script>
+		<script type="text/javascript" src="{base_url url='public/admin/js/tab.js'}"></script>
+
+		<div class="button-div">
+          <input type="submit" value=" 确定 " class="button">
+          <input type="reset" value=" 重置 " class="button">
+        </div>
+<!-- end goods form -->
+<div id="footer">
+&copy;Ecshop, Thank You!
+</div>
+</body></html>

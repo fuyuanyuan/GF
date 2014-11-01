@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 添加属性 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+<script type='text/javascript' src="{base_url url='public/admin/js/jquery.js'}"></script>
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/attribute/attrlist'}">商品属性</a></span>
+<span class="action-span1"><a href="{base_url url='admin/welcome'}">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 添加属性 </span>
+<div style="clear:both"></div>
+</h1>
+<div class="main-div">
+  <form onsubmit="" name="theForm" method="post" action="{base_url url='admin/attribute/attradd'}">
+  <table width="100%" id="general-table">
+      <tbody><tr>
+        <td class="label">属性名称：</td>
+        <td>
+          <input type="text" size="30" value="" name="attr_name">
+          <span class="require-field">*</span>        </td>
+      </tr>
+      <tr>
+        <td class="label">所属商品类型：</td>
+        <td>
+          <select name="attr_type" onchange="wenben()">
+          <option value="0">请选择...</option>
+            <option value="1">文本框</option><option value="2">下拉列表</option><option value="3">单选</option>
+			</select> <span class="require-field">*</span>
+		</td>
+      </tr>
+
+	  <tr>
+        <td class="label">可选值：</td>
+        <td>
+          <input type="text" size="30" value="" name="attr_values" id="kexuan">
+          <span class="require-field">*</span>
+		  <span id="noticeAttrType" style="display:block" class="notice-span">
+			当属性类型为下拉列表或单选时，需要预设值，采用|分割例如：GSM|3G|4G
+		  </span>
+		  </td>
+      </tr>
+      
+      <tr>
+        <td class="label">是否上架</td>
+        <td>
+          <input type="radio" value="1" name="is_filter"> 是          
+          <input type="radio" value="0" checked="checked"  name="is_filter"> 否        
+		</td>
+      </tr>
+     
+      <tr>
+        <td colspan="2">
+        <div class="button-div">
+          <input type="submit" class="button" value=" 确定 ">
+          <input type="reset" class="button" value=" 重置 ">
+        </div>
+        </td>
+      </tr>
+      </tbody></table>
+  </form>
+</div>
+<div id="footer">
+  版权所有 &copy; 2012-2013 传智播客 - PHP培训 - 
+</div>
+</body></html>
+<script type='text/javascript'>
+function wenben()
+{
+  if($("select").val() == 1)
+  {
+    $("#kexuan").attr("disabled",'true');
+  }
+  else
+  {
+    $("#kexuan").removeAttr('disabled');
+  }
+
+}
+</script>

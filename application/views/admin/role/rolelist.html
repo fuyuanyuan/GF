@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<link href="{base_url}public/admin/styles/general.css" rel="stylesheet" type="text/css" />
+	<link href="{base_url}public/admin/styles/jpage.css" rel="stylesheet" type="text/css" />
+	<link href="{base_url}public/admin/styles/main.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jPages.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.ui.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.validate.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.form.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}my.js"></script>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{base_url url='admin/role/add'}">添加新角色</a></span>
+	<span class="action-span1"><a href="">SHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 角色列表 </span>
+	<div style="clear:both"></div>
+</h1>
+
+
+
+         
+
+
+<form method="post" action="{base_url url='admin/user/stops'}" name="listForm" onsubmit="return confirmSubmit(this)">
+  <!-- start goods list -->
+	<div class="list-div" id="listDiv">
+		<table cellpadding="3" cellspacing="1">
+			<tbody>
+				<tr>
+					<th>编号</th>
+					<th>角色名称</th>
+					<th>控制器-方法名</th>
+					<th>操作</th>
+				</tr>
+				<tr></tr>
+				{foreach $rolelist as $row}
+				<tr>
+					<td>{$num_li+$row@index}</td>
+					<td class="first-cell">{$row->role_name}</td>
+					<td align="center">{$row->role_auth_ac|truncate:80:"...":"utf-8"}</td>
+					<td align="center">
+					<a title="查看" target="_blank" href="{base_url url='admin/role/detail'}/{$row->role_id}"><img width="16" height="16" border="0" src="{$smarty.const.B_IMG_DIR}icon_view.gif"></a>
+						<a href="{base_url url='admin/role/mof_role'}/{$row->role_id}" title="编辑"><img src="{base_url}public/admin/images/icon_edit.gif" width="16" height="16" border="0"></a>
+						 <a title="移除" onclick="return confirm('注意：该操作不能撤销！是否确认？')" href="{base_url url='admin/role/del_role'}/{$row->role_id}"><img width="16" height="16" border="0" src="{$smarty.const.B_IMG_DIR}icon_drop.gif"></a>
+					</td>
+				</tr>
+				{/foreach}
+	
+  </tbody>
+ </table>
+<!-- end goods list -->
+
+	<!-- 分页 -->
+	<table id="page-table" cellspacing="0">
+		<tbody>
+			<tr>
+				<td align="right" nowrap="true" style="background-color: rgb(255, 255, 255);">
+					<!-- $Id: page.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+					<div id="turn-page">
+						{$page}
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+</form>
+
+<div id="footer">
+	版权所有 &copy; 2012-2013 传智播客 - PHP培训 - 
+</div>
+
+</body>
+</html>

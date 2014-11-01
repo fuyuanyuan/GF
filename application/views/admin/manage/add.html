@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ECSHOP 管理中心 - 编辑管理员账号 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{base_url url='public/admin/styles/general.css'}" rel="stylesheet" type="text/css" />
+<link href="{base_url url='public/admin/styles/main.css'}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/manage/showlist'}">管理员列表</a></span>
+<span class="action-span1"><a href="{base_url url='admin/welcome'}">ECSHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 编辑管理员账号 </span>
+<div style="clear:both"></div>
+</h1>
+<div class="main-div">
+<form method="post" action="{site_url url='admin/manage/add'}" name="theForm" >
+<table width="100%" >
+  <tr>
+    <td class="label">管理员名称：</td>
+    <td><input type="text" name="mg_name" value="" /></td>
+  </tr>
+  <tr>
+    <td class="label">管理员密码：</td>
+    <td><input type="text" name="mg_pwd" value="" /></td>
+  </tr>
+  <tr>
+    <td class="label">管理员角色：</td>
+    <td>
+    	{foreach $role as $value}
+    		<input type="radio" value="{$value->role_id}" name="mg_role_id" />{$value->role_name}
+    	{/foreach}
+    </td>
+  </tr>
+    
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value=" 确定 " class="button" />
+      <input type="reset" value=" 重置 " class="button" />
+      </td>
+  </tr>
+</table>
+
+</form>
+</div>
+<div id="footer">
+	版权所有 &copy; 2012-2013 传智播客 - PHP培训 - 
+</div>
+
+
+</body>
+</html>

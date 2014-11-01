@@ -1,0 +1,53 @@
+{include file="./header.html"}
+		<!-- BREADCRUMB -->
+		<div class="breadcrumb-container">
+			<div class="container">
+				<div class="relative">
+					<ul class="bc unstyled clearfix">
+						<li><a href="#">Home</a></li>
+						<li class="active">文章信息</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // BREADCRUMB -->
+		
+		<!-- SITE MAIN CONTENT -->
+		<main id="main-content" role="main">
+		<div class="section" id="art_parent">
+			<div class="container" id="art_info" style="min-height:500px;">
+			
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<h3 class="section-title">{$info[0]->art_title}</h3>
+						<small><cite class="pull-right">发布者：{$info[0]->art_author}　　发布时间：{date('Y-m-d H:i:s',$info[0]->art_time)}</cite></small>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+						<hr />
+						{$info[0]->art_content}
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="btn-group" style="display:block;">
+						{if $info[0]->art_id != $min}
+						<button val="{$info[0]->art_id}" class="btn btn-primary pull-left" id="art_pre">上一篇</button>
+						{/if}
+						{if $info[0]->art_id != $max}
+						<button class="btn btn-primary pull-right" val="{$info[0]->art_id}" id="art_next">下一篇</button>
+						{/if}
+					</div>					
+				</div>
+				
+			</div>
+		</div>	
+			
+		</main>
+		<!-- // SITE MAIN CONTENT -->
+		<div id="art_loading" style="width:150px;height:30px;line-height:30px;background:lightblue;border:1px solid blue;text-indent:10px;position:absolute;top:500px;left:500px;display:none;">
+			加载中，请稍后...
+		</div>
+		{include file="./footer.html"}

@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>GF_SHOP 管理中心 - 添加新文章 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{$smarty.const.B_CSS_DIR}general.css">
+<link type="text/css" rel="stylesheet" href="{$smarty.const.B_CSS_DIR}main.css">
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jPages.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.ui.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.validate.js"></script>
+	<script type="text/javascript" src="{$smarty.const.B_JS_DIR}jquery.form.js"></script>
+<script type="text/javascript" src="{$smarty.const.B_JS_DIR}my.js"></script>
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/role/showlist'}">角色列表</a></span>
+<span class="action-span1"><a href="#">GF_SHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 添加新角色</span>
+<div style="clear:both"></div>
+</h1>
+<script src="{$smarty.const.B_JS_DIR}utils.js" type="text/javascript"></script><script src="{$smarty.const.B_JS_DIR}selectzone.js" type="text/javascript"></script><script src="{$smarty.const.B_JS_DIR}validator.js" type="text/javascript"></script><!-- start goods form -->
+<div class="tab-div">
+  <div id="tabbar-div" class="tab-front">
+    <p>
+      <span id="general-tab" class="tab-back">角色详情</span>
+    </p>
+  </div>
+
+  <div id="tabbody-div">
+    <form name="theForm"  method="post" action="{base_url url='admin/role/add'}">
+    <table width="90%" id="general-table" style="display: table;">
+      <tbody><tr>
+        <td class="narrow-label">角色名称</td>
+        <td><input type="text" value="" maxlength="60" size="40" name="role_name"><span class="require-field">*</span></td>
+      </tr>
+      <tr></tr><tr></tr>
+      {foreach $main_auth as $v}          
+     <tr>
+     	<td class="narrow-label"><input type="checkbox" name="role_auth_ids[]" value="{$v->auth_id}"  val="id{$v->auth_id}" />{$v->auth_name}</td>
+     	<td>
+     	{foreach $son_auth as $sv}
+     	{if $sv->auth_pid == $v->auth_id}
+     		<input type="checkbox" name="role_auth_ids[]" value="{$sv->auth_id}" val="{$v->auth_id}" />{$sv->auth_name}　
+     	{/if}
+     	{foreachelse}
+     		<span>没有子类数据</span>
+     	{/foreach}
+     	</td>
+     </tr>
+	{foreachelse}
+		<span>没有任何数据</span>
+	{/foreach}
+    </tbody>
+    </table>
+  
+    <div class="button-div">
+      <input type="submit" class="button" value=" 确定 ">
+    </div>
+    </form>
+  </div>
+
+</div>
+<!-- end goods form -->
+
+<div id="footer">
+共执行 3 个查询，用时 0.080427 秒，Gzip 已禁用，内存占用 2.431 MB<br>
+版权所有 &copy; 2005-2012 上海商派网络科技有限公司，并保留所有权利。</div>
+</body></html>

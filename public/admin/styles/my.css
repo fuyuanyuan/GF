@@ -1,0 +1,86 @@
+body {
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:'微软雅黑';
+	background:#fff;
+}
+ul,ol {
+	list-style-type:none;
+}
+#login_form {
+	width:650px;
+	height:450px;
+	background:url(../images/login1.png) no-repeat;
+	margin:90px auto;
+}
+#login {
+	width:350px;
+	height:400px;
+	display:block;
+	margin-top:100px;
+	float:right;
+}
+#login p {
+	text-align:left	;
+	position:relative;
+}
+#login label {
+	padding: 10px 0 0 0;
+	color:#666;
+	font-size:16px;
+}
+#login input.text {
+	width:200px;
+	height:35px;
+	font-size:20px;	
+	text-indent:20px;
+	letter-spacing:1px;
+	border:1px solid #ccc;
+	border-radius : 5px;
+}
+#login input.sub {
+	width:80px;
+	height:35px;
+	border:1px solid #ccc;
+	cursor:pointer;
+	font-size:18px;
+	background:#fff;
+	border-radius:5px;
+	margin-top:10px;
+	margin-left:100px;
+	position:relative;
+	top:30px;
+	left:30px;
+}
+#login input.sub:hover {
+	background:#fa6f57;
+	color:#fff;
+}
+#login span.star {
+	color:red;
+}
+#login .login_error li label.error {
+	color:red;
+	font-size:12px;
+}
+#login img.login_img {
+	position:absolute;
+	top:50px;
+	left:70px;
+}
+#loading {
+	color:#666;
+	font-size:14px;
+	background:url(../images/loading.gif) no-repeat 20px center;
+	line-height:25px;
+	text-indent:35px;
+}
+#login span.succ{
+	position:relative;
+	top:8px;
+	width:18px;
+	height:18px;
+	display:inline-block;
+	background:url(../images/reg_succ.png) no-repeat center center;
+}

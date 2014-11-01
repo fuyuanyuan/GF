@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 评论列表 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/general.css'}">
+<link type="text/css" rel="stylesheet" href="{base_url url='public/admin/styles/main.css'}">
+<script type='text/javascript' src='{base_url url='public/admin/js/jquery.js'}'></script>
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="{base_url url='admin/pinglun/add'}">添加评论</a></span>
+<span class="action-span1"><a href="#">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 评论列表 </span>
+<div style="clear:both"></div>
+</h1>
+
+<!-- start ad position list -->
+<div id="listDiv" class="list-div">
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tbody><tr>
+  <th>ID</th>
+  <th>所属商品id</th>
+  <th>评论人</th>
+  <th>级别</th>
+  <th>满意度</th>
+  <th>评论内容</th>
+  <th>评论时间</th>
+  <th>管理员回复</th>
+	<th>操作</th>
+  </tr>
+{foreach $comlist as $crow}
+  <tr id="0_6" class="0">
+    <td align="center">{$crow->comment_id}</td>
+    <td align="center">{$crow->goods_id}</td>
+    <td align="center">{$crow->user_name}</td>
+    <td align="center">{section name=loop loop=($crow->comment_xing)}<img src="{base_url}public/default/images/xing.png">{/section}</td>
+    <td>{if $crow->comment_rank==0}好评{elseif $crow->comment_rank==1}中评{else}差评{/if}</td>
+    <td>{$crow->content}</td>
+  
+    <td align="center" width=100>{date('Y-m-d',$crow->add_time)}</td>
+    <td align="center" width=100><a href="{base_url url='admin/reply/add/'}/{$crow->comment_id}">点击回复</a></td>
+    <td align="center" width=60>
+      <a href="{base_url url='admin/pinglun/edit'}/{$crow->comment_id}" title="编辑"><img src="{base_url url='public/admin/images'}/icon_edit.gif" width="16" height="16" border="0"></a>
+      <a href="{base_url url='admin/pinglun/del'}/{$crow->comment_id}" onclick="confrim('您确实要把该商品放入回收站吗？')" title="回收站"><img src="{base_url url='public/admin/images'}/icon_trash.gif" width="16" height="16" border="0"></a>
+      </td>
+  </tr>
+  {/foreach}
+</table>
+
+<table cellspacing="0" id="page-table">
+  <tbody><tr>
+    <td nowrap="true" align="right" style="background-color: rgb(255, 255, 255);">
+	  <div id="turn-page">
+        总计  <span id="totalRecords"><?php echo $total;?></span>
+        个记录分为 <span id="totalPages"><?php echo $total_page;?></span>
+        页当前第 <span id="pageCurrent"><?php echo $page;?></span>
+        页，每页 
+         
+		</select>
+        </span>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div id="footer">
+&copy;Ecshop, Thank You!
+</div>
+
+</body>
+</html>
